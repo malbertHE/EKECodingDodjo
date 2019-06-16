@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMovieXMLData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MovieXMLData>
+    <url>https://www.youtube.com/watch?v=3kydCkyy6jE&amp;t=1508s</url>
+    <title>Magasszintű programozási nyelvek I. - 1. elődadás</title>
+    <lengthInSec>4741</lengthInSec>
+    <releaseDate>2017-09-21</releaseDate>
+  </MovieXMLData>
+  <MovieXMLData>
+    <url>https://www.youtube.com/watch?v=Q8qSB0va2n4</url>
+    <title>Magasszintű programozási nyelvek I. - 2. előadás</title>
+    <lengthInSec>4964</lengthInSec>
+    <releaseDate>2017-09-28</releaseDate>
+  </MovieXMLData>
+  <MovieXMLData>
+    <url>https://www.youtube.com/watch?v=-39G13iL26g</url>
+    <title>Magasszintű programozási nyelvek I. - 3. előadás</title>
+    <lengthInSec>4783</lengthInSec>
+    <releaseDate>2018-09-24</releaseDate>
+  </MovieXMLData>
+</ArrayOfMovieXMLData>
