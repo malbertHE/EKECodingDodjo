@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{C7F886D8-E4E8-46F4-BBE2-C890EB85DACF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Program", "Program", "{F96DAEB8-D914-4F6E-8AFA-EF62BDC58581}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAF.EKE.GOF1", "Library\MAF.EKE.GOF1\MAF.EKE.GOF1.csproj", "{CE5D628A-9182-4684-AF06-E682A2EFD230}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{648209A0-1918-480E-85C2-FA7DD88DEF8F}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAF.EKE.GOF1.MatrixExample", "Program\MAF.EKE.GOF1.MatrixExample\MAF.EKE.GOF1.MatrixExample.csproj", "{F9528C76-7F81-4140-AC32-C973C9F73105}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAF.EKE.GOF1.Test", "Library\MAF.EKE.GOF1.Test\MAF.EKE.GOF1.Test.csproj", "{483B20D0-8D0C-48D2-9F66-0D07203A1221}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE5D628A-9182-4684-AF06-E682A2EFD230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE5D628A-9182-4684-AF06-E682A2EFD230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE5D628A-9182-4684-AF06-E682A2EFD230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE5D628A-9182-4684-AF06-E682A2EFD230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9528C76-7F81-4140-AC32-C973C9F73105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9528C76-7F81-4140-AC32-C973C9F73105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9528C76-7F81-4140-AC32-C973C9F73105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9528C76-7F81-4140-AC32-C973C9F73105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{483B20D0-8D0C-48D2-9F66-0D07203A1221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{483B20D0-8D0C-48D2-9F66-0D07203A1221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{483B20D0-8D0C-48D2-9F66-0D07203A1221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{483B20D0-8D0C-48D2-9F66-0D07203A1221}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CE5D628A-9182-4684-AF06-E682A2EFD230} = {C7F886D8-E4E8-46F4-BBE2-C890EB85DACF}
+		{F9528C76-7F81-4140-AC32-C973C9F73105} = {F96DAEB8-D914-4F6E-8AFA-EF62BDC58581}
+		{483B20D0-8D0C-48D2-9F66-0D07203A1221} = {C7F886D8-E4E8-46F4-BBE2-C890EB85DACF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E01891E4-CCF5-4FF1-AE1C-5E0B91F94C1D}
+	EndGlobalSection
+EndGlobal

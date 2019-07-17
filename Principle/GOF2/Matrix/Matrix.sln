@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{15281314-00A8-4323-ADA7-B27E871BE7BB}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{3A0007B8-AC7C-46DC-9A7F-E3CC5F331686}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Program", "Program", "{BBFBC75A-1C8C-4FB3-83CA-ED9A788ABB2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAF.EKE.GOF2", "Library\MAF.EKE.GOF2\MAF.EKE.GOF2.csproj", "{F7BADE40-4327-48FA-BA34-2119030FF66D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAF.EKE.GOF1", "..\..\GOF1\Matrix\Library\MAF.EKE.GOF1\MAF.EKE.GOF1.csproj", "{CE5D628A-9182-4684-AF06-E682A2EFD230}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAF.EKE.GOF2.MatrixExample", "Program\MAF.EKE.GOF2.MatrixExample\MAF.EKE.GOF2.MatrixExample.csproj", "{A1475DA6-A24D-47B5-B0B0-3924D24FAF4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7BADE40-4327-48FA-BA34-2119030FF66D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7BADE40-4327-48FA-BA34-2119030FF66D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7BADE40-4327-48FA-BA34-2119030FF66D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7BADE40-4327-48FA-BA34-2119030FF66D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE5D628A-9182-4684-AF06-E682A2EFD230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE5D628A-9182-4684-AF06-E682A2EFD230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE5D628A-9182-4684-AF06-E682A2EFD230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE5D628A-9182-4684-AF06-E682A2EFD230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1475DA6-A24D-47B5-B0B0-3924D24FAF4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1475DA6-A24D-47B5-B0B0-3924D24FAF4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1475DA6-A24D-47B5-B0B0-3924D24FAF4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1475DA6-A24D-47B5-B0B0-3924D24FAF4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F7BADE40-4327-48FA-BA34-2119030FF66D} = {3A0007B8-AC7C-46DC-9A7F-E3CC5F331686}
+		{CE5D628A-9182-4684-AF06-E682A2EFD230} = {3A0007B8-AC7C-46DC-9A7F-E3CC5F331686}
+		{A1475DA6-A24D-47B5-B0B0-3924D24FAF4C} = {BBFBC75A-1C8C-4FB3-83CA-ED9A788ABB2E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBCB142F-8455-4E5A-9B80-1028CD90DBDB}
+	EndGlobalSection
+EndGlobal
