@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MAF.EKE.GOF2.MatrixExample")]
+[assembly: AssemblyTitle("MAF.EKE.SRP.Hanoi")]
 [assembly: AssemblyDescription("Készült az Eszterházy Károly Egyetemen tanuló diákoknak, de bárki más is felhasználhatja.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Megyesi Albert Ferenc")]
-[assembly: AssemblyProduct("MAF.EKE.GOF2.MatrixExample")]
+[assembly: AssemblyProduct("MAF.EKE.SRP.Hanoi")]
 [assembly: AssemblyCopyright("Copyright © MAF 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a1475da6-a24d-47b5-b0b0-3924d24faf4c")]
+[assembly: Guid("bf681a39-f555-4b53-9c4b-8233cfa4b912")]
 
 // Version information for an assembly consists of the following four values:
 //

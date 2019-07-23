@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{0A08F0B8-5411-494A-9A0C-19C11E93ABD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Program", "Program", "{16B12609-D95C-4518-AE64-C1646E956464}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28B91684-4D21-4468-B524-8734EB5AE13D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAF.EKE.SRP.HanoiDemo", "Program\MAF.EKE.SRP.HanoiDemo\MAF.EKE.SRP.HanoiDemo.csproj", "{AC7CB8F5-3141-447B-B401-6ED031BA6A52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAF.EKE.SRP", "Library\MAF.EKE.SRP\MAF.EKE.SRP.csproj", "{BF681A39-F555-4B53-9C4B-8233CFA4B912}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAF.EKE.SRP.HanoiDemo2", "Program\MAF.EKE.SRP.HanoiDemo2\MAF.EKE.SRP.HanoiDemo2.csproj", "{19553182-4AA6-427B-A4F0-4AD0D4949174}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC7CB8F5-3141-447B-B401-6ED031BA6A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC7CB8F5-3141-447B-B401-6ED031BA6A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC7CB8F5-3141-447B-B401-6ED031BA6A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC7CB8F5-3141-447B-B401-6ED031BA6A52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF681A39-F555-4B53-9C4B-8233CFA4B912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF681A39-F555-4B53-9C4B-8233CFA4B912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF681A39-F555-4B53-9C4B-8233CFA4B912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF681A39-F555-4B53-9C4B-8233CFA4B912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19553182-4AA6-427B-A4F0-4AD0D4949174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19553182-4AA6-427B-A4F0-4AD0D4949174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19553182-4AA6-427B-A4F0-4AD0D4949174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19553182-4AA6-427B-A4F0-4AD0D4949174}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AC7CB8F5-3141-447B-B401-6ED031BA6A52} = {16B12609-D95C-4518-AE64-C1646E956464}
+		{BF681A39-F555-4B53-9C4B-8233CFA4B912} = {0A08F0B8-5411-494A-9A0C-19C11E93ABD0}
+		{19553182-4AA6-427B-A4F0-4AD0D4949174} = {16B12609-D95C-4518-AE64-C1646E956464}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78506093-0719-4F8C-837E-B832C66B60F3}
+	EndGlobalSection
+EndGlobal
