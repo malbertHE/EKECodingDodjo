@@ -6,7 +6,7 @@ namespace MAF.EKE.SRP.HanoiDemo
 {
 	class Program
 	{
-		static byte korongokSzama = 4;
+		static readonly byte korongokSzama = 4;
 
 		static void Main(string[] args)
 		{
@@ -131,7 +131,7 @@ namespace MAF.EKE.SRP.HanoiDemo
 		static int d;
 		static int x;
 		static int f;
-		static byte[] abc = new byte[3];
+		static readonly byte[] abc = new byte[3];
 		const char A = 'A';
 		const char B = 'B';
 		const char C = 'C';

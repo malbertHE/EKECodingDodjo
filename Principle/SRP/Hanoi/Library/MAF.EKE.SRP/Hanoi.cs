@@ -6,6 +6,15 @@ namespace MAF.EKE.SRP
 	/// <summary>Hanoi logikát tartalmazó osztály. Három rúdból áll, melyeknek nevei: A, B, C.</summary>
     public class Hanoi
     {
+		/// <summary>Az első rúd neve. Kezdetben ezen vannak a korongok.</summary>
+		public const char C_RodNameA = 'A';
+
+		/// <summary>A második rúd neve. A korongokat erre kell áthelyezni.</summary>
+		public const char C_RodNameB = 'B';
+
+		/// <summary>A harmadik rúd neve. Ez a segéd rúd.</summary>
+		public const char C_RodNameC = 'C';
+
 		/// <summary>Korongok száma összesen.</summary>
 		public byte NumberOfDisks { get; private set; }
 
@@ -33,7 +42,7 @@ namespace MAF.EKE.SRP
 		public Hanoi(byte pNumberOfSteps)
 		{
 			NumberOfDisks = pNumberOfSteps;
-			steps = CaclcHanoi(pNumberOfSteps, 'A', 'B', 'C');
+			steps = CaclcHanoi(pNumberOfSteps, C_RodNameA, C_RodNameB, C_RodNameC);
 		}
 
 		List<Step> steps;
