@@ -5,31 +5,28 @@ Adott az SRP\Hanoi\Program\MAF.EKE.SRP.HanoiDemo projekt. Ez a projekt egy Hanoi
 
 ## Megoldás
 
-Mivel a korongok számát egy változó tárolja, ami jelenleg 4-re van állítva, adná magát a lehetőség, hogy átírjam át 5-re. Ez viszont egy rothadó kód, ahogy ezt megpróbálnám, máris szétcsúszna a konzolos ablak. Azt kell ilyenkor észrevenni, hogy elengedhetetlen a refaktorálás. Ebben a kicsi példában akár azt is megtehetjük, hogy újraírjuk az egészet, betartva az elveket, de itt most a refaktorálást választom, hogy refaktorálás módszerét be tudjam mutatni. 
+Mivel a korongok számát egy változó tárolja, ami jelenleg 4-re van állítva, adná magát a lehetőség, hogy átírjuk 5-re. Ez viszont egy rothadó kód, ahogy ezt megpróbálnánk, máris szétcsúszna a konzolos ablak. Azt kell ilyenkor észrevenni, hogy elengedhetetlen a refaktorálás. Ebben a kicsi példában akár azt is megtehetjük, hogy újraírjuk az egészet, betartva az elveket, de mivel jellemzően nem ilyen apró feladatokon kell dolgozni ezért, hogy a valósághoz közelítsünk itt is a refaktorálást választjuk. 
 
 ### Refaktorálás
 
-Az első lépés, hogy a felületet elválasztom a logikától. Ha az lett volna a feladat, hogy a felületet cseréljük le grafikus felületre szintén nem tudtam volna megtenni, mert a felület és a logika egy osztályban van megvalósítva. Készítek egy könyvtárat, hogy oda át tudjam majd tenni a logikát. A fenti megoldott példában ez a MAF.EKE.SRP.Hanoi projekt.
-Ha elkészítettük a logikát megvalósító projektet, akkor hozzunk létre benne egy Hanoi osztályt.
-Hozzuk létre a konstruktort, ami 1 paramétert vár, a korongok számát, amit elmentünk egy privát mezőbe, de olvasásra publikussá tesszük (property).
+1. Az első lépés, hogy a felületet elválasztjuk a logikától. Ha az lett volna a feladat, hogy a felületet cseréljük le grafikus felületre szintén nem tudtuk volna megtenni, mert a felület és a logika egy osztályban van megvalósítva. 
+  - Készítünk egy könyvtárat, hogy oda át tudjuk majd tenni a logikát. A fenti megoldott példában ez a MAF.EKE.SRP.Hanoi projekt.
+  - Ha elkészítettük a logikát megvalósító projektet, akkor hozzunk létre benne egy Hanoi osztályt.
+  - Hozzuk létre a konstruktort, ami 1 paramétert vár, a korongok számát, amit elmentünk egy privát mezőbe, de olvasásra publikussá tesszük (property).
+2. Az osztály működését többféle képen is megvalósíthatnánk. Mi most az egyszerűség kedvéért azt a megoldást választjuk, amikor a konstruktor már előre kiszámolja a lépéseket és eltárolja, hogy a továbbiakban csupán információszolgáltatást nyújtson. Szerencsére a programunk nem annyira rothadó, a logika nagy részét 2 függvény végzi el, ezeket fogjuk áttenni. Ez a két függvény az eredeti kódban a Hanoi és a HanoiA. 
+  - Ezeket emeljük át a logikai részbe.
+  - A Hanoi függvényt átnevezzük CalcHanoi névre.
+  - A függvények ne legyenek statikusak, a static kulcsszót töröljük.
+3. A Tuple osztályok használatát meg kell szüntetni. Ez szembe megy a **GOF1** alapelvvel és Bob bácsi se szereti ha egy változónak a nevéből nem derül ki, hogy ő mi is pontosan, márpedig a Tuple által egybefogott változókhoz csak típus van megadva vagyis nincs nevük. 
+  - Létrehozzuk a Step osztályt, amivel majd kiváltjuk a Tuple osztályt. A Step osztály megvalósítását megtalálod a Step.cs fájlban.
+  - A Hanoi.cs fájlban lecseréljük a Tuple osztályt mindenhol Step osztályra.
+4. A konstruktorban meghívjuk a CalcHanoi függvényt, de a visszatérési értékét egy privát változóba eltároljuk.
+5. A CalcHanoi függvény által kiszámolt és privát változóba mentett listát publikáljuk kifelé a StepList változóban, ami egy IReadOnlyList típusú változó. Ezt is többféle képen megoldhattuk volna, mi itt most így oldottuk meg azt, hogy a privát listához ne férjenek hozzá, de azért az adatokat le tudják kérdezni. 
 
-Az osztály működését többféle képen megvalósíthatnánk. Mi most az egyszerűség kedvéért azt a megoldást választjuk, amikor a konstruktor már előre kiszámolja a lépéseket és eltárolja és a továbbiakban csupán információszolgáltatást nyújt. Szerencsére a programunk nem annyira rothadó, a logika nagy részét 2 függvény végzi el, ezeket fogjuk áttenni. Ez a két függvény az eredeti kódban a Hanoi és a HanoiA. Ezeket átemeljük a logikai részbe.
+Eddig a logikát sikeresen leszakítottuk a felületről. Ez volt a könnyebb rész. Mivel a HanoiDemo projektbe itt most nem lehet beleírni, mert ez maga a feladat, ezért létrehoztam egy HanoiDemo2 projektet a Program mappába, amibe átmásoltam a HanoiDemo megvalósítását és így a továbbiakban a HanoiDemo2 kódot refaktorálom, vagyis a refaktorált felület itt tekinthető meg. Akkor lássuk a további lépéseket.
 
-A Hanoi függvényt átnevezzük CalcHanoi névre.
-
-A függvények ne legyenek statikusak, a static kulcsszót töröljük.
-
-A Tuple osztályok használatát meg kell szüntetni. Ez szembe megy a GOF1 alapelvvel és Bob bácsi se szereti ha egy változónak a nevéből nem derül ki, hogy ő mi is pontosan, márpedig a Tuple által egybefogott változókhoz csak típus van megadva vagyis nincs is nevük. Létrehozzuk a Step osztályt, amivel majd kiváltjuk a Tuple osztályt. A Step osztály megvalósítását megtalálod a Step.cs fájlban.
-A Hanoi.cs fájlban lecseréljük a Tuple osztályt mindenhol Step osztályra.
-
-A konstruktorban meghívjuk a CalcHanoi függvényt, de a visszatérési értékét egy privát változóba eltároljuk.
-
-A CalcHanoi függvény által kiszámolt és privát változóba mentett listát publikáljuk kifelé a StepList változóban, ami egy IReadOnlyList típusú változó. Ezt is többféle képen megoldhattuk volna, mi itt most így oldottuk meg azt, hogy a privát listához ne férjenek hozzá, de azért az adatokat le tudják kérdezni. Remek! Eddig a logikát sikeresen leszakítottuk a felületről. Ez volt a könnyebb rész. Mivel a HanoiDemo projektbe itt most nem lehet beleírni, mert ez maga a feladat, ezért létrehoztam egy HanoiDemo2 projektet a Program mappába, amibe átmásoltam a HanoiDemo megvalósítását és így a továbbiakban a HanoiDemo2 kódot refaktorálom, vagyis a refaktorált felület itt tekinthető meg. Akkor lássuk a további lépéseket.
-
-A Hanoi és a HanoiA függvényekre már nincs szükség itt ezért ezeket töröljük, de ez még nem elég, mert a Main hivatkozott a Hanoi függvényre. A HanoiDemo2 referenciájához hozzáadjuk a MAF.EKE.SRP projektet, majd a Main-beli függvény hivatkozás előtt létrehozzunk egy Hanoi példányt, valamint a hivatkozást átírjuk, hogy most már a Hanoi példánytól vegye az adatokat. Ez még mindig nem elég a ResultList változónk itt még Tuple típusú. Javítjuk mindenhol, hogy Step típusú legyen és a ResultList változót töröljük.
-
-Azt találjuk a kódban, hogy az általunk megszüntetett ResultList változót Count értékét is felhasználták. Ezt javíthatnánk úgy, hogy a Hanoi példány LepesekListája változó Count-ját használjuk fel, de ezzel megsértenénk Demeter törvényét, ezért a Hanoi osztályt bővítjük úgy, hogy legyen LépésekSzáma propertyje, ami ezt az adatot adja vissza.
-
+6. A Hanoi és a HanoiA függvényekre már nincs szükség itt ezért ezeket töröljük, de ez még nem elég, mert a Main hivatkozott a Hanoi függvényre. A HanoiDemo2 referenciájához hozzáadjuk a MAF.EKE.SRP projektet, majd a Main-beli függvény hivatkozás előtt létrehozzunk egy Hanoi példányt, valamint a hivatkozást átírjuk, hogy most már a Hanoi példánytól vegye az adatokat. Ez még mindig nem elég a ResultList változónk itt még Tuple típusú. Javítjuk mindenhol, hogy Step típusú legyen és a ResultList változót töröljük.
+7. Azt találjuk a kódban, hogy az általunk megszüntetett ResultList változót Count értékét is felhasználták. Ezt javíthatnánk úgy, hogy a Hanoi példány LepesekListája változó Count-ját használjuk fel, de ezzel megsértenénk **Demeter törvény**ét, ezért a Hanoi osztályt bővítjük úgy, hogy legyen LépésekSzáma propertyje, ami ezt az adatot adja vissza.
 Nagyon jó, hogy elkészítettük a LépésekListája változót a Hanoi osztályban, de valójában ezt az osztályt konténer osztályként kell használjuk, ezért kap egy kis kiegészítést.
 
 A programunk ismét teszi a dolgát, csak a logikai részt már kiszerveztük. Viszont a korongok számát még mindig nem lehet növelni. Ehhez további refaktorálás szükséges, melyekből most az következik, hogy a Hanoi példányt kitesszük privát osztályszintű változóvá, hogy a többi függvény is elérhesse.
