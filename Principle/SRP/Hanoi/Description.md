@@ -145,6 +145,6 @@ A 20 éves tapasztalatom mondja ezt.
 <section class="footnotes">
 <ol class="footnotes-list">
   <li id="fn1"  class="footnote-item"><p>"A tiszta kód ellentéte a rothadó kód (angolul: rotting code). Akkor mondjuk, hogy a kód rothad, ha a programozóink már nem mernek hozzányúlni, mert attól félnek, hogy egy hibajavítás egy másik hibát fog eredményezni.
-<b>A rothadó kód nagyon lelassítja a fejlesztést, ami ahhoz vezet, hogy a versenytársak megelőzik a cégünket, végül tönkremegyünk.</b>" - forrás: Programozási technológiák - Kusper Gábor<a href="#fnref1" class="footnote-backref">?</a></p></li>
+<b>A rothadó kód nagyon lelassítja a fejlesztést, ami ahhoz vezet, hogy a versenytársak megelőzik a cégünket, végül tönkremegyünk.</b>" - forrás: Programozási technológiák - Kusper Gábor<a href="#fnref1" class="footnote-backref"> ^</a></p></li>
 </ol>
 </section>
