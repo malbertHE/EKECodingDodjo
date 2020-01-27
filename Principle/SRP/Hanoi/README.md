@@ -9,6 +9,6 @@ Ha nem boldogulsz a feladattal, akkor a következő példákat nézd át:
 
 A HanoiDemo és HanoiDemo2 konzolos példaprogramokat hasonlítsd össze, hogy mennyivel lett egyszerűbb. Gondold át azt, hogy egyik vagy másik megoldással mit nyersz és mit veszítessz!
 
-Ha elsőre nem sikerült, ne keseredj el, inkább olvasd el a [Docs/Description.md](Description.md) fájlban leírt segítséget, ahol lépésről lépésre le van írva a feladat megvalósításának menete.
+Ha elsőre nem sikerült, ne keseredj el, inkább olvasd el a [Description.md](Docs/Description.md) fájlban leírt segítséget, ahol lépésről lépésre le van írva a feladat megvalósításának menete.
 
 **Mindenkinek jó gyakorlást!**
