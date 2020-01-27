@@ -122,15 +122,15 @@ A két programot, ha összehasonlítjuk, akkor azt látjuk, hogy az eredeti kise
 > Fontos még azt is látni, hogy a jelen példaprogram méretei miatt talán úgy tűnik, hogy nincs is értelme ennek a refaktorálásnak, mert túl sok lépésből áll. Egyszerűbbnek tűnhet az egészet gyorsan újraírni. Nagy projekteknél viszont más út járhatatlan. Ha valakinek van egy kis tapasztalata, akkor ő már jól tudja, hogy mekkora probléma tud lenni, ha napokig vagy hetekig nem fordul le egy program, márpedig, ha nem a refaktorálás módszerét használjuk, akkor könnyen össze lehet hozni ezt nagyobb projekteknél. 
 
 ## Lábjegyzetek
-
 <hr class="footnotes-sep">
 <section class="footnotes">
 	<ol class="footnotes-list">
 		<li id="fn1"  class="footnote-item"><p>"A tiszta kód ellentéte a rothadó kód (angolul: rotting code). Akkor mondjuk, hogy a kód rothad, ha a programozóink már nem mernek hozzányúlni, mert attól félnek, hogy egy hibajavítás egy másik hibát fog eredményezni. <b>A rothadó kód nagyon lelassítja a fejlesztést, ami ahhoz vezet, hogy a versenytársak megelőzik a cégünket, végül tönkremegyünk.</b>" - forrás: Programozási technológiák - Kusper Gábor<a href="#fnref1" class="footnote-backref"> ^</a></p></li>
 		<li id="fn2"  class="footnote-item"><p>"Az Egy felelősség - egy osztály alapelve (angolul: Single Responsibility Principle – SRP) azt mondja ki, hogy minden osztálynak egyetlen felelősséget kell lefednie, de azt teljes egészében." - forrás: Programozási technológiák - Kusper Gábor<a href="#fnref2" class="footnote-backref"> ^</a></p></li>
 		<li id="fn3"  class="footnote-item"><p>"Demeter törvénye, vagy más néven a legkisebb tudás elve (angolul: Law of Demeter / Principle of Least Knowledge) kimondja, hogy egy osztály csak a közvetlen ismerőseit hívhatja." - forrás: Programozási technológiák - Kusper Gábor<a href="#fnref3" class="footnote-backref"> ^</a></p></li>
-		<li id="fn4"  class="footnote-item"><p>https://social.msdn.microsoft.com/Forums/vstudio/en-US/1aa43c6c-71b9-42d4-aa00-60058a85f0eb/c-console-window-disable-resize?forum=csharpgeneral<a href="#fnref4" class="footnote-backref"> ^</a></p></li></ol>
-		<li id="fn5"  class="footnote-item"><p>A mágikus szám olyan literál, aminek a megértéséhez tanulmányozni kell a kódot. Ez rontja az olvashatóságot, ezért nem szerencsés a használatuk.<a href="#fnref5" class="footnote-backref"> ^</a></p></li></ol>
+		<li id="fn4"  class="footnote-item"><p>https://social.msdn.microsoft.com/Forums/vstudio/en-US/1aa43c6c-71b9-42d4-aa00-60058a85f0eb/c-console-window-disable-resize?forum=csharpgeneral<a href="#fnref4" class="footnote-backref"> ^</a></p></li>
+		<li id="fn5"  class="footnote-item"><p>A mágikus szám olyan literál, aminek a megértéséhez tanulmányozni kell a kódot. Ez rontja az olvashatóságot, ezért nem szerencsés a használatuk.<a href="#fnref5" class="footnote-backref"> ^</a></p></li>
+	</ol>
 </section>
 
 ## Irodalomjegyzék
