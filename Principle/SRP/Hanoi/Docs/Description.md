@@ -13,10 +13,10 @@ Mivel a korongok számát egy változó tárolja, ami jelenleg 4-re van állítv
 **Az egyik legfontosabb lépés mindig az, hogy a felületet leválasszuk a logikáról.** Nagyobb programoknál ennek a két rétegnek élesen el kell határolódni egymástól. Ugyanezzel a logikával a szétválasztott részeket tovább bontjuk. Ezekben a műveletekben az a cél, hogy minél kisebb egységekre tudjuk felbontani. Ha elkülönültek egymástól az általuk elvégzett feladatok átláthatóbbá válnak. Így könnyebb eldönteni, hogy mely részeket kell külön osztályokba szervezni és melyeket kell tovább bontani. Itt kap nagyon fontos szerepet az **SRP**<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>, vagyis az egy felelősség - egy osztály alapelve.
 
 Egy refaktorálás lehetséges menete:
-... refaktor.png
+![alt text](Docs/refaktor.png "UseCase diagram")
 
 A fent vázoltakat leírni nagyon egyszerű, de a valóságban nagyobb spagetti kódok teljes refaktorálásakor ezt sokkal nehezebb végrehajtani. Szükségünk van még egy nagyon fontos lépésre, a tervezésre. Ész nélküli refaktorálás nem biztos, hogy a megfelelő irányba visz el. Ahhoz, hogy megkönnyítsük a dolgunkat minden refaktorálás elé egy tervezést kell beszúrni. Meg kell tervezzük, hogy adott állapotból hová szeretnénk eljutni. Ezek alapján így bővül a táblázatunk:
-... refaktor2.png
+![alt text](Docs/refaktor2.png "UseCase diagram")
 
 
 A fent vázolt refaktorálási technikából most már látszik, hogy mi hiányzik. Nem tudjuk biztosítani az egyes refaktorálási fázisok között azt, hogy a kódunk még mindig megfelelően működik. Ezért fogjuk a következő példában ezt a refaktorálási technikát kiegészíteni a TDR technikával.
