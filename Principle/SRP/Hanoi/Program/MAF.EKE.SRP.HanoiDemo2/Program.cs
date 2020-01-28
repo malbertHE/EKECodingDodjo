@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 
@@ -56,11 +56,11 @@ namespace MAF.EKE.SRP.HanoiDemo2
 		}
 
 		private static void SetNumberOfDisks()
-        {
-            Console.WriteLine("Hanoi torony demó program.");
-            while (true)
-            {
-                Console.Write("Kérem adja meg a korongok számát [1,15] intervallumban: ");
+		{
+			Console.WriteLine("Hanoi torony demó program.");
+			while (true)
+			{
+				Console.Write("Kérem adja meg a korongok számát [1,15] intervallumban: ");
 				if (!byte.TryParse(Console.ReadLine(), out numberOfDisks) || numberOfDisks < c_MinDiskCount || numberOfDisks > c_MaxDiskCount)
 					Console.WriteLine("A megadott érték nem megfelelő!");
 				else
@@ -68,17 +68,17 @@ namespace MAF.EKE.SRP.HanoiDemo2
 					InitVariables(numberOfDisks);
 					break;
 				}
-            }
-        }
+			}
+		}
 
-        private static void InitDrawHanoi()
-        {
-            InitConsole();
+		private static void InitDrawHanoi()
+		{
+			InitConsole();
 
-            hanoi = new Hanoi(numberOfDisks);
-            Console.WriteLine($"{hanoi.NumberOfDisks} korongszámú Hanoi torny demó");
-            Console.WriteLine();
-        }
+			hanoi = new Hanoi(numberOfDisks);
+			Console.WriteLine($"{hanoi.NumberOfDisks} korongszámú Hanoi torny demó");
+			Console.WriteLine();
+		}
 
 		private static void DrawDisksInfo()
 		{
