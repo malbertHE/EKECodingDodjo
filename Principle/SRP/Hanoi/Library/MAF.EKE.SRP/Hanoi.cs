@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace MAF.EKE.SRP
 {
 	/// <summary>Hanoi logikát tartalmazó osztály. Három rúdból áll, melyeknek nevei: A, B, C.</summary>
-    public class Hanoi
-    {
+	public class Hanoi
+	{
 		/// <summary>Az első rúd neve. Kezdetben ezen vannak a korongok.</summary>
 		public const char C_RodNameA = 'A';
 
@@ -61,5 +61,5 @@ namespace MAF.EKE.SRP
 			ResultList.Add(new Step(N, R1, R3));
 			HanoiA(N - 1, R2, R3, R1, ResultList);
 		}
-    }
+	}
 }
