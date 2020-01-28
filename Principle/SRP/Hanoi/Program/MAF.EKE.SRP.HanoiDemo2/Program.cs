@@ -156,10 +156,10 @@ namespace MAF.EKE.SRP.HanoiDemo2
 		}
 
 		private static void DrawInitialState()
-        {
+		{
 			DrawRods();
 			DrawDisksInitialState();
-        }
+		}
 
 		private static void WriteInfoTextBegin()
 		{
