@@ -4,8 +4,8 @@
 
 Ha nem boldogulsz a feladattal, akkor a következő példákat nézd át:
 
-- A Library könyvtár MAF.EKE.SRP.Hanoi projektje a szolgáltatást valósítja meg.
-- A Program könyvtár MAF.EKE.SRP.HanoiDemo2 a konzolos kiírást mutatja be.
+- A Library könyvtár [MAF.EKE.SRP.Hanoi](https://github.com/malbertHE/EKECodingDodjo/tree/master/Principle/SRP/Hanoi/Program/MAF.EKE.SRP.HanoiDemo) projektje a szolgáltatást valósítja meg.
+- A Program könyvtár [MAF.EKE.SRP.HanoiDemo2](https://github.com/malbertHE/EKECodingDodjo/tree/master/Principle/SRP/Hanoi/Program/MAF.EKE.SRP.HanoiDemo2) a konzolos kiírást mutatja be.
 
 A HanoiDemo és HanoiDemo2 konzolos példaprogramokat hasonlítsd össze, hogy mennyivel lett egyszerűbb. Gondold át azt, hogy egyik vagy másik megoldással mit nyersz és mit veszítessz!
 
