@@ -29,36 +29,36 @@ Hasonló gondolatokat vázolt [Paulo Caroli](https://www.caroli.org/en/about-car
 A vázolt példa nagyon egyszerű. Egy négyzetlap területének kiszámítása nem okozhat gondot. Vagyis a program logikai része a végtelenségig egyszerű. Mégis amikor azt mondjuk, hogy tesztvezérelten írjuk át, hirtelen azt se fogjuk tudni, hogy mit is kell tenni. Ilyenkor dőljünk hátra és gondoljuk át a feladatot. Már megint össze van keveredve a felület és a logikai megvalósítás. Az elsődleges célunk az lesz, hogy szétválasszuk a felületet és a logikát. Ha ezt megtettük, akkor már foglalkozhatunk a logikai rész rendberakásával.
 
 Lássuk a lépéseket:
- - Mivel az eredeti gyakorló példát nem szeretnénk felülírni, ezért a [ShapesDemo](https://github.com/malbertHE/EKECodingDodjo/tree/master/Principle/OCP/Shapes/Program/MAF.EKE.OCP.ShapesDemo) projektet lemásoljuk [ShapesDemo2](https://github.com/malbertHE/EKECodingDodjo/tree/master/Principle/OCP/Shapes/Program/MAF.EKE.OCP.ShapesDemo2) névre. A továbbiakban ezt a projektet kezdjük el refaktorálni.
+- Mivel az eredeti gyakorló példát nem szeretnénk felülírni, ezért a [ShapesDemo](https://github.com/malbertHE/EKECodingDodjo/tree/master/Principle/OCP/Shapes/Program/MAF.EKE.OCP.ShapesDemo) projektet lemásoljuk [ShapesDemo2](https://github.com/malbertHE/EKECodingDodjo/tree/master/Principle/OCP/Shapes/Program/MAF.EKE.OCP.ShapesDemo2) névre. A továbbiakban ezt a projektet kezdjük el refaktorálni.
 
- - Mivel tesztvezérelten akarjuk javítani, a következő lépés, hogy létrehozzuk a logikai rész teszteléséhez a tesztprojektet, [MAF.EKE.OCP.Shapes.Test](https://github.com/malbertHE/EKECodingDodjo/tree/master/Principle/OCP/Shapes/Library/MAF.EKE.OCP.Shapes.Test) néven.
- - A teszt projekt referenciájához fel szeretnénk venni a tesztelendő projektet, de ilyen még nincs, ezért létrehozzuk a [MAF.EKE.OCP.Shapes](https://github.com/malbertHE/EKECodingDodjo/tree/master/Principle/OCP/Shapes/Library/MAF.EKE.OCP.Shapes) projektet. Ebben lesz majd a logikai rész megvalósítva.
+- Mivel tesztvezérelten akarjuk javítani, a következő lépés, hogy létrehozzuk a logikai rész teszteléséhez a tesztprojektet, [MAF.EKE.OCP.Shapes.Test](https://github.com/malbertHE/EKECodingDodjo/tree/master/Principle/OCP/Shapes/Library/MAF.EKE.OCP.Shapes.Test) néven.
+- A teszt projekt referenciájához fel szeretnénk venni a tesztelendő projektet, de ilyen még nincs, ezért létrehozzuk a [MAF.EKE.OCP.Shapes](https://github.com/malbertHE/EKECodingDodjo/tree/master/Principle/OCP/Shapes/Library/MAF.EKE.OCP.Shapes) projektet. Ebben lesz majd a logikai rész megvalósítva.
  
 TDD esetén most következne, az, hogy előidézzük a piros állapotot, vagyis megírjuk az első tesztünket, amit majd ki kell elégíteni. Itt sincs ez másképpen. De mit is akarunk? Akár új projekt, akár már létező refaktorálását végezzük, kell egy terv. Látnunk kell azt, hogy mit akarunk elérni. Mi most azt akarjuk első körben elérni, hogy a logikai részt leválasszuk a felületről. De **mi a logikai rész? Azon szolgáltatások összesége, amik a felület részére információt szolgáltatnak.** A mi esetünkben csak egy ilyen szolgáltatás van. Egy négyzet területének kiszámítása. *Akár egy, akár több szolgáltatást tartalmaz a felület, egyszerre mindig csak egy szolgáltatást választunk le, mert csak egy igényhez írhatunk tesztet egyszerre, különben nem tartjuk be a TDR szabályait.* Készítünk egy minimális tervet. Mivel négyzet számítás szolgáltatásról van szó, ezért a szolgáltatást egy Square osztályba tesszük és a szolgáltatást egy AreaCalculation függvényben publikáljuk ki. Fontos, hogy itt nem készíthetünk ettől nagyobb tervet, mert egyenlőre csak annyi a célunk, hogy a logikai részt leválasszuk a felületről úgy, hogy közben végig üzemképes kell maradjon a kód. Ha minden szolgáltatást így apránként emelünk át, akkor végig üzemképes marad a kód. Nem kapunk ugyan tiszta kódot, de leválasztjuk a logikai részt a felületről. Tehát a további lépések:
 
- - A teszt projektünkbe létrehozunk egy SquareTest teszt osztályt. Ebbe készítünk egy TestCreateSquare nevű teszt függvényt, ami kikényszeríti a Square osztály létezését. Ha megfuttatjuk a tesztet, akkor az sikertelen lesz, vagyis pirosak vagyunk.
- - A logikai projektbe elkészítjük a Square osztályt. Megfuttatjuk a tesztet. Zöldek vagyunk.
- - A következő lépés, hogy kényszerítsük ki az AreaCalculation függvény létezését. Megírjuk a tesztet, ami kikényszeríti a függvény létezését. Mivel a függvény nem létezik, ezért a projekt le se fordul, vagyis pirosak vagyunk.
- - Megírjuk a függvényt. Zöldek vagyunk.
- - A függvényünknek kell egy bemeneti paraméter, amiben az oldal hosszát adjuk meg. Az előbb megírt tesztünket javítjuk, úgy, hogy várjon paramétert a függvény. Ismét pirosak vagyunk.
- - Kielégítjük az előbbi tesztet. Zöldek vagyunk.
- - A tesztünket ismét átírjuk, hogy kényszerítsen ki egy double típusú visszatérési értéket. Pirosak vagyunk.
- - Átírjuk a függvényünket, hogy adjon vissza egy darab 0-át. Zöldek vagyunk.
- - A következő lépés, hogy elvárjuk a függvényünk a megfelelő értéket adja vissza. Ehhez a tesztünket átírjuk, hogy egy, kettő és tíz paraméterekkel meghívva a függvényünket a megfelelő értéket, vagyis a helyes terület érték visszaadását várja el a függvénytől. 
- - Nincs más hátra, mint a valódi területszámító logikai részt átmásolni a felület kódjából a függvényünkbe. Az így kiszámolt értéket adja vissza a függvény. Ismét zöldek vagyunk.
+- A teszt projektünkbe létrehozunk egy SquareTest teszt osztályt. Ebbe készítünk egy TestCreateSquare nevű teszt függvényt, ami kikényszeríti a Square osztály létezését. Ha megfuttatjuk a tesztet, akkor az sikertelen lesz, vagyis pirosak vagyunk.
+- A logikai projektbe elkészítjük a Square osztályt. Megfuttatjuk a tesztet. Zöldek vagyunk.
+- A következő lépés, hogy kényszerítsük ki az AreaCalculation függvény létezését. Megírjuk a tesztet, ami kikényszeríti a függvény létezését. Mivel a függvény nem létezik, ezért a projekt le se fordul, vagyis pirosak vagyunk.
+- Megírjuk a függvényt. Zöldek vagyunk.
+- A függvényünknek kell egy bemeneti paraméter, amiben az oldal hosszát adjuk meg. Az előbb megírt tesztünket javítjuk, úgy, hogy várjon paramétert a függvény. Ismét pirosak vagyunk.
+- Kielégítjük az előbbi tesztet. Zöldek vagyunk.
+- A tesztünket ismét átírjuk, hogy kényszerítsen ki egy double típusú visszatérési értéket. Pirosak vagyunk.
+- Átírjuk a függvényünket, hogy adjon vissza egy darab 0-át. Zöldek vagyunk.
+- A következő lépés, hogy elvárjuk a függvényünk a megfelelő értéket adja vissza. Ehhez a tesztünket átírjuk, hogy egy, kettő és tíz paraméterekkel meghívva a függvényünket a megfelelő értéket, vagyis a helyes terület érték visszaadását várja el a függvénytől. 
+- Nincs más hátra, mint a valódi területszámító logikai részt átmásolni a felület kódjából a függvényünkbe. Az így kiszámolt értéket adja vissza a függvény. Ismét zöldek vagyunk.
  
 Azt mondhatnánk, hogy megvagyunk a szolgáltatásokkal, de nem szabad elfelejteni, hogy szélsőértékeket is tesztelnünk kell. Szélsőérték lehetne a 0, de azzal nincs gond, mert 0\*0 az 0. Ettől függetlenül betehetjük. Itt a szélsőértékekkel a túlcsordulást kéne ellenőrizzük. Pl. double.Max paraméterrel hívva a függvény túlcsordulást eredményezne, de jelenleg a túlcsordulást a függvényünk nem kezeli. Amennyiben például int vagy uint értékeket használtunk volna, akkor a checked kulcsszóval védett részbe kellene tegyük a számításokat, így viszont egyszerűen Infinity értéket kapunk, de ez nekünk továbbra se jó. A következő lépésekkel kivédjük ezt:
 
- - Készítünk egy TestAreaCalculationOverflowError nevű teszt függvényt, ahol elvárjuk azt, hogy double.Max paraméterrel hívva a függvény hibát dobjon.
- - Megírjuk a kódot, hogy ismét zöldek legyünk.
- - Mivel zavar minket a túlcsordulás hibaüzenet, ezért átírjuk az előbbi tesztet úgy, hogy saját hibaosztály dobását várja.
- - Megírjuk a hibaosztályt és javítjuk a függvényünket úgy, hogy elkapjuk a hibát és saját hiba típussal dobjuk tovább. Figyelem! Itt most két lépést hajtottunk végre. Hiba osztályt írtunk és függvényt módosítottunk. *Én azt a szabályt alkalmazom, hogy ha egyedi hibaosztály készítésére van szükség, akkor azt mindig abban a lépésben teszem meg, ahol először szükséges az adott hibaosztály felhasználása, de csak akkor, ha a hibaosztály nem csinál mást mint meghívja az ősét. Ha nem csak ennyit csinál, hanem más műveleteket is végrehajt, akkor ezt az osztályt is a TDD módszer szerint kell lefejleszteni.* Itt most mondhatnánk azt, hogy ezzel megszegtük a TDD módszert. Igen, megszegtük. Viszont az esetek 99.9 százalékában ezek a hibaosztályok másra nem lesznek használva, vagyis nem lesznek módosítva, így fölösleges ezeket teszttel lefedni (nincs is mit tesztelni ilyenkor, hacsak nem a puszta létezését az osztálynak és a függvényeknek).
+- Készítünk egy TestAreaCalculationOverflowError nevű teszt függvényt, ahol elvárjuk azt, hogy double.Max paraméterrel hívva a függvény hibát dobjon.
+- Megírjuk a kódot, hogy ismét zöldek legyünk.
+- Mivel zavar minket a túlcsordulás hibaüzenet, ezért átírjuk az előbbi tesztet úgy, hogy saját hibaosztály dobását várja.
+- Megírjuk a hibaosztályt és javítjuk a függvényünket úgy, hogy elkapjuk a hibát és saját hiba típussal dobjuk tovább. Figyelem! Itt most két lépést hajtottunk végre. Hiba osztályt írtunk és függvényt módosítottunk. *Én azt a szabályt alkalmazom, hogy ha egyedi hibaosztály készítésére van szükség, akkor azt mindig abban a lépésben teszem meg, ahol először szükséges az adott hibaosztály felhasználása, de csak akkor, ha a hibaosztály nem csinál mást mint meghívja az ősét. Ha nem csak ennyit csinál, hanem más műveleteket is végrehajt, akkor ezt az osztályt is a TDD módszer szerint kell lefejleszteni.* Itt most mondhatnánk azt, hogy ezzel megszegtük a TDD módszert. Igen, megszegtük. Viszont az esetek 99.9 százalékában ezek a hibaosztályok másra nem lesznek használva, vagyis nem lesznek módosítva, így fölösleges ezeket teszttel lefedni (nincs is mit tesztelni ilyenkor, hacsak nem a puszta létezését az osztálynak és a függvényeknek).
  
 A logikai részt kiszerveztük, már csak az van hátra, hogy a felületet is átírjuk, hogy a Square osztályból vegye az információkat. Mielőtt ezt megtennénk előtte még van egy elmaradásunk. A függvényünk kész, már működik, de a felülethez nem készítettük el az Intellisense támogatását. Ezt pótoljuk. A következő lépések tehát:
 
- - Az AreaCalculation függvényhez a megfelelő komment elkészítése.
- - Az MAF.EKE.OCP.ShapesDemo2 projekt referenciájához hozzáadjuk a MAF.EKE.OCP.Shapes projektet.
- - A konzolos programban a négyzetlap terület számítása előtt példányosítjuk a Square osztályt és a terület kiíráshoz az AreaCalculation függvényt használjuk fel.
+- Az AreaCalculation függvényhez a megfelelő komment elkészítése.
+- Az MAF.EKE.OCP.ShapesDemo2 projekt referenciájához hozzáadjuk a MAF.EKE.OCP.Shapes projektet.
+- A konzolos programban a négyzetlap terület számítása előtt példányosítjuk a Square osztályt és a terület kiíráshoz az AreaCalculation függvényt használjuk fel.
  
 Ha lennének még logikai részt megvalósító kódok a konzolos alkalmazás felületén, akkor ismét kiválasztanánk egy szolgáltatást és kiemelnék a felületről, hasonlóan mint az előbbi területszámítást. Mivel itt nincs több logikai rész, így nem kell több szolgáltatást kiemelni. 
 
@@ -86,10 +86,10 @@ public class Square
 ```
 Elmondhatjuk tehát, hogy szétválasztottuk a felületet a logikai résztől. Azt viszont nem mondhatjuk el, hogy tiszta kódunk van és még a feladatokat se oldottuk meg. A következő lépés lehetne az, hogy nekiesünk a feladat megoldásának, de mivel az is cél volt, hogy betartsuk az elveket, *sokkal könnyebb dolgunk lesz, ha előbb a kialakult kódhalmazt átírjuk úgy, hogy a kért elveket betartsák*. Szerencsére a példánk most annyira egyszerű, hogy itt nem lesz sok dolgunk. Lássuk:
 
- - GOF1 - Felületre programozz, ne implementációra! Ezt az elvet nem sértettük meg, ezzel nincs több feladatunk.
- - GOF2 - Használj objektum-összetételt öröklés helyett, ha csak lehet! Ezt az elvet se sértjük. Bár használunk egy esetben öröklődést, a SquareException esetében, de ezt célszerű így megírjuk, mivel gyakorlatilag ilyen esetekben csak becsomagolunk egy elkapott hibát egy saját hiba típusba.
- - SRP - Egy felelősség egy osztály alapelve. Jelenleg ezt se sértjük, mert az osztályunk egy felelősségi körrel rendelkezik és az igényelt szolgáltatást teljes egészében megvalósítja.
- - OCP - Nyitva-zárt alapelv. Látszólag ebben a példában ezt se sértjük, pedig ha jobban átgondoljuk, súlyosan megsértettük ezt az elvet. 
+- GOF1 - Felületre programozz, ne implementációra! Ezt az elvet nem sértettük meg, ezzel nincs több feladatunk.
+- GOF2 - Használj objektum-összetételt öröklés helyett, ha csak lehet! Ezt az elvet se sértjük. Bár használunk egy esetben öröklődést, a SquareException esetében, de ezt célszerű így megírjuk, mivel gyakorlatilag ilyen esetekben csak becsomagolunk egy elkapott hibát egy saját hiba típusba.
+- SRP - Egy felelősség egy osztály alapelve. Jelenleg ezt se sértjük, mert az osztályunk egy felelősségi körrel rendelkezik és az igényelt szolgáltatást teljes egészében megvalósítja.
+- OCP - Nyitva-zárt alapelv. Látszólag ebben a példában ezt se sértjük, pedig ha jobban átgondoljuk, súlyosan megsértettük ezt az elvet. 
 
 Ha megpróbálnánk a feladat első pontját teljesíteni, akkor vagy írnunk kéne egy teljesen független osztályt, ami a téglalap területét számolja ki, vagy át kéne írnunk ennek az osztálynak az AreaCalculation függvényét. Esetleg megtehetnénk, hogy létrehozunk egy másik függvényt, de ezek az utak nem jók. Már azzal hiba van, hogy az osztályunk neve arra utal, hogy ez egy négyzet, akkor hogyan számolhatna téglalap területet. Megtenni megtehetné, de abban a pillanatban megsértenénk az SRP elvet és nagy valószínűséggel a GOF1 elvet is. Jól látszik az, hogy ha sikerül elérnünk azt az állapotot, hogy a felület és a logika egymástól jól elkülönülve legyen, akkor a következő lépés ismét egy tervezés lesz. Ezen a ponton át kell gondolnunk és egy tervet kell készítenünk, hogy miként lehetne ezt tovább fejleszteni úgy, hogy a fenti elveket ne sértsük meg. Ha megvan a terv, akkor a TDR módszerrel ismét nekieshetünk a refaktorálásnak.
 
@@ -126,21 +126,21 @@ Itt azt is észre lehet venni, hogy stratégia tervezési mintát is használhat
 Kezdjük el ennek a lefejlesztését.
 
 - Mivel szükségünk van pontokra, ráadásul rugalmasan kezelve a dimenziókat, ezért megkövetelünk egy Point osztályt. Ilyen osztály már létezik. Van a [System.Drawing](https://docs.microsoft.com/en-us/dotnet/api/system.drawing?view=netframework-4.8) névtérben, de ez nekünk nem jó. Léteznek más osztályok, amiket felhasználhatnánk, de most a gyakorlás kedvéért mi magunk valósítjuk meg.
- - Megkövetelünk egy konstruktort hozzá, ami paraméterben várja a dimenziónak megfelelően az egyes tengelyekhez az értékeket.
- - Megkövetelünk egy GetDimensionsValues függvényt, ami visszaadja az értékeket.
- - Megköveteljük, hogy a konstruktor paraméterének jövőbeni változásai ne befolyásolják a pont objektumot.
- - Megköveteljük, hogy a GetDimensionsValues függvény visszaadott értékén keresztül ne tudjunk a pont értékeihez hozzáférni.
- - Igényt támasztunk egy Shape absztrakt osztályra, ami az alakzatok őse lesz. **Absztrakt osztályt nem tudunk tesztelni, csak akkor, ha a leszármaztatjuk a teszt projektben, ezért nem tűnik egyértelműnek, hogy TDD esetén ezt kell-e tesztelni. Kell! Főleg akkor, ha implementáció is van az absztrakt osztályban**, mint esetünkben. Megírjuk a tesztet, ami kikényszeríti a Shape absztrakt osztály megírását.
- - Kikényszerítjük, hogy a konstruktor paraméterét kötelező megadni, vagyis nem lehet null.
- - Engedjük-e meg egy alakzatnak, hogy 0 dimenziós legyen? Hülyeségnek tűnik egy 0 dimenziós alakzat, főleg, ha ki kell rajzolni. Persze egy 0 dimenziós alakzat területszámításával is problémáink lesznek. De ugyanígy egy 3-tól több dimenziós alakzat is furcsa lehet. 
+- Megkövetelünk egy konstruktort hozzá, ami paraméterben várja a dimenziónak megfelelően az egyes tengelyekhez az értékeket.
+- Megkövetelünk egy GetDimensionsValues függvényt, ami visszaadja az értékeket.
+- Megköveteljük, hogy a konstruktor paraméterének jövőbeni változásai ne befolyásolják a pont objektumot.
+- Megköveteljük, hogy a GetDimensionsValues függvény visszaadott értékén keresztül ne tudjunk a pont értékeihez hozzáférni.
+- Igényt támasztunk egy Shape absztrakt osztályra, ami az alakzatok őse lesz. **Absztrakt osztályt nem tudunk tesztelni, csak akkor, ha a leszármaztatjuk a teszt projektben, ezért nem tűnik egyértelműnek, hogy TDD esetén ezt kell-e tesztelni. Kell! Főleg akkor, ha implementáció is van az absztrakt osztályban**, mint esetünkben. Megírjuk a tesztet, ami kikényszeríti a Shape absztrakt osztály megírását.
+- Kikényszerítjük, hogy a konstruktor paraméterét kötelező megadni, vagyis nem lehet null.
+- Engedjük-e meg egy alakzatnak, hogy 0 dimenziós legyen? Hülyeségnek tűnik egy 0 dimenziós alakzat, főleg, ha ki kell rajzolni. Persze egy 0 dimenziós alakzat területszámításával is problémáink lesznek. De ugyanígy egy 3-tól több dimenziós alakzat is furcsa lehet. 
 
 De ha belegondolunk és a 4-dik dimenziónak az időt vesszük fel, akkor mozgó alakzatokat hozhatnánk létre. De akkor már nem lenne jó a konstruktor paramétere, az ugyanis nem időt, hanem pontot vár. Vagyis ezt nem tudnánk lekezelni. A programunk alkalmas lehet a későbbiekben alakzatok mozgatására, de ahhoz más osztályokat és további terveket kell készíteni. Nekünk itt ilyen feladatunk nincs. A fentiekből az következne, hogy korlátozzuk a dimenziókat 1 és 3 közzé, de ezt nem teszem meg. A feladatunkat ettől függetlenül is el tudjuk végezni, és akkor miért korlátozzunk. Lehet, hogy létezik a 0 dimenziós alakzat (elképezlni nem tudom az milyen lehet) vagy a 12 dimenziós, ahol 12 pont határozza meg a dimenziót, de ez csupán annyit jelent, hogy én nem tudok ezekről. *Ha rugalmas kódot akarunk, akkor használjuk szabálynak azt, hogy nem korlátozunk, csak ha feltétlenül szükséges.* Tehát kikényszerítjük, hogy 0 dimenziós és 0-tól nagyobb dimenziós alakzatokat is elfogadjon az alap alakzat osztályunk. Kikényszerítjük ezt egy érdekes teszttel. Nem mindenki tartja szabályosnak azt a teszt módszert, hogy véletlenSZERŰ számokkal teszteljünk, de nekünk ide tökéletes. Csak annyit kell tegyünk, hogy, ha gond van, akkor a hibaüzenetbe is kiírjuk, hogy éppen hány dimenziós teszt futott. Így válik megismételhetővé a teszt probléma esetén. Annyit azért megteszünk, hogy max 100 dimenziót hozzunk létre, mert a memória véges. Int.Max esetén biztos megtöltenénk a memóriát. 
  Mit nyerünk ezzel? Vannak esetek, amikor utólag olyan kód készülhet el, ahol valamilyen oknál fogva ráprogramoznak egy konkrét esetre. Volt szerencsém már ilyennel találkozni. Minden esetet nem tudunk letesztelni, de legalább egy minimális esélyt adunk annak, hogy ha valaki garázdálkodna a kódba, akkor azt előbb vagy utóbb (inkább utóbb) elkaphassuk.
 
- - Az absztrakt osztályban csak azt valósítjuk meg ami minden alakzat osztályhoz kell. Tudja visszaadni az alakzatokat leíró pontok halmazát. Kikényszerítünk egy GetPoints függvényt. A tesztjeinket átírjuk, hogy a GetPoints függvény segítségével fussanak. Csak így érjük el a pontokat, csak így tudjuk tesztelni. A másik megoldás, hogy konténerosztályt készítünk az alakzat osztályból. Itt mi mind a kettőt megvalósítjuk.
- - A pontokat az alakzat a létrejöttekor kapja meg, vagyis kikényszerítünk egy konstruktort, amiben megkapjuk az alakzatok tömbjét.
- - Az alakzatot a bemenő paramétertől függetlenné tesszük. Kikényszerítjük, hogy a bemenő objektum változása ne befolyásolja az alakzat későbbi működését.
- - Kényszerítsük ki a Shape konstruktoránál, hogy a paraméterekben megkapott pontok csak azonos dimenzióbeli pontok lehetnek. Ha nem azonosak, akkor az alakzatot nem engedjük példányosítani. Ehhez viszont előbb ki kell kényszerítsük, hogy a Point osztály tudja visszaadni egy függvénnyel, hogy ő milyen dimenzióban van, vagyis kikényszerítünk a Point osztályba egy Dimension propertyt.
+- Az absztrakt osztályban csak azt valósítjuk meg ami minden alakzat osztályhoz kell. Tudja visszaadni az alakzatokat leíró pontok halmazát. Kikényszerítünk egy GetPoints függvényt. A tesztjeinket átírjuk, hogy a GetPoints függvény segítségével fussanak. Csak így érjük el a pontokat, csak így tudjuk tesztelni. A másik megoldás, hogy konténerosztályt készítünk az alakzat osztályból. Itt mi mind a kettőt megvalósítjuk.
+- A pontokat az alakzat a létrejöttekor kapja meg, vagyis kikényszerítünk egy konstruktort, amiben megkapjuk az alakzatok tömbjét.
+- Az alakzatot a bemenő paramétertől függetlenné tesszük. Kikényszerítjük, hogy a bemenő objektum változása ne befolyásolja az alakzat későbbi működését.
+- Kényszerítsük ki a Shape konstruktoránál, hogy a paraméterekben megkapott pontok csak azonos dimenzióbeli pontok lehetnek. Ha nem azonosak, akkor az alakzatot nem engedjük példányosítani. Ehhez viszont előbb ki kell kényszerítsük, hogy a Point osztály tudja visszaadni egy függvénnyel, hogy ő milyen dimenzióban van, vagyis kikényszerítünk a Point osztályba egy Dimension propertyt.
 
 Az alábbi részt már az adott tervezési ciklusban el kell döntsük, de szándékosan ide lett leírva, mert a probléma ezen a részen merül fel, ha nem terveztünk megfelelően. Lássuk mi is a gond.
 
@@ -154,21 +154,21 @@ Ennél a sok leszármaztatásnál van még egy megvizsgálandó probléma. Sért
 
 Akkor haladjunk tovább ezen a gondolatmeneten.
 
- - Kényszerítsük ki a Quadrilateral absztrakt osztályt, ami a Shape osztályból származik. Azért absztrakt, mert ez is csak egy gyűjtőosztály, legalábbis ebben a katában még ezt gondoljuk, amit majd bánni is fogunk egy későbbi katánál.
- - Kényszerítsünk ki egy konstruktort ami pontosan négy pontot kap.
- - Szintén célszerű, már csak a teszt megkönnyítésére is, hogy a négyszöget alkotó 4 pontot le tudjuk kérni. Ezeket akár el is nevezhetnénk A, B, C és D pontoknak.
+- Kényszerítsük ki a Quadrilateral absztrakt osztályt, ami a Shape osztályból származik. Azért absztrakt, mert ez is csak egy gyűjtőosztály, legalábbis ebben a katában még ezt gondoljuk, amit majd bánni is fogunk egy későbbi katánál.
+- Kényszerítsünk ki egy konstruktort ami pontosan négy pontot kap.
+- Szintén célszerű, már csak a teszt megkönnyítésére is, hogy a négyszöget alkotó 4 pontot le tudjuk kérni. Ezeket akár el is nevezhetnénk A, B, C és D pontoknak.
 
 Van még elhárítandó akadály. A területszámító függvényünk oldalhosszúságot kap, nem pedig a négyszögek pontjait. Az biztos, hogy szükségünk lesz egy függvényre, ami képes kiszámolni 2 pont közötti távolságot. Ez viszont dimenziófüggetlen kell legyen, helyesebben mondva minden dimenzióhoz külön meg kéne írni. Nekünk viszont csak 2 dimenziós alakzataink vannak most, ezért elég csak ezt megvalósítani. A kérdés már csak az, hová tegyük ezt a függvényt. Logikusnak tűnik, hogy a Shape osztályba, hiszen minden alakzatnál szükség lehet az alakzat bármely 2 pontja közötti távolság kiszámítása.
 
- - Kikényszerítünk egy Distance függvényt a Shape osztályban, ami paraméterként 2 indexet vár, az alakzatot alkotó pontok halmazából. Itt most megint használhatnánk távolság számító stratégiát az egyes dimenziókhoz, de továbbra is egyedi megoldást alkalmazunk és egy egyszerű swich elágazással oldjuk majd meg a problémát.
- - Kikényszerítünk a Shape osztályba egy GetDimension függvényt, hogy ezzel ki tudjuk majd szolgálni a swich elágazást.
- - Kikényszerítjük a Distance függvénytől, hogy a megfelelő hibát dobja, ha olyan dimenzióbeli alakzattal állunk szemben amihez nincs kidolgozva távolságszámítás.
- - Kikényszerítjük a Distance függvénytől, hogy a megfelelő hibát dobja, ha a paraméterben megadott indexek nem létező elemre mutatnak.
- - A Distance függvénynek működnie is kéne, ezért kikényszerítjük, hogy megfelelő eredményt adjon vissza. Ehhez a következő tételt alkalmazzuk: ha adott a koordináta-rendszerben az A(a1;a2) és B(b1;b2) pontok, akkor a két pont távolsága egyenlő a két pont megfelelő koordináták különbségeinek négyzetösszegéből vont négyzetgyökével.
- - A következő lépés az lenne, hogy kikényszerítjük a Square osztályt, de ezt nem kell megtennünk, hiszen ez már létezik. Akkor most kellene nekünk valami olyan statikus függvény, aminél, ha oldalhosszúságot adunk meg, akkor legyártja nekünk a négyzet példányt. Ennek érdekében kikényszerítünk egy CreateSquare statikus függvényt.
- - Kikényszerítjük, hogy ez a statikus függvény az oldalhosszúság függvényében egy A = (0,0) kezdő koordinátával készítsen egy négyzetet, mégpedig úgy, hogy a további pontoknál a fel, jobbra, le, balra elvet alkalmazza.
- - Kikényszerítjük a megfelelő konstruktort is, de privátra állítjuk. Ha nem ezt tesszük, akkor meg kell írni azokat az ellenőrzéseket is, amik garantálják, hogy csak olyan négy pontot fogadjon el a konstruktor, amik biztosan négyzetet alkotnak. Nem gond a megírása, de már így is rendesen átestünk a ló túloldalára, ezt most nem írjuk meg.
- - Elérkezett a pillanat, hogy az AreaCalculation függvényünket refaktoráljuk, úgy, hogy most már a példány számolja ki a területet. Ez egyben azt is jelenti, hogy nincs szükség oldal paraméterre, ennek értelmében a TestAreaCalculation és TestAreaCalculationOverflowError tesztfüggvényeket átírjuk, hogy paraméter nélkül kelljen hívni őket. 
+- Kikényszerítünk egy Distance függvényt a Shape osztályban, ami paraméterként 2 indexet vár, az alakzatot alkotó pontok halmazából. Itt most megint használhatnánk távolság számító stratégiát az egyes dimenziókhoz, de továbbra is egyedi megoldást alkalmazunk és egy egyszerű swich elágazással oldjuk majd meg a problémát.
+- Kikényszerítünk a Shape osztályba egy GetDimension függvényt, hogy ezzel ki tudjuk majd szolgálni a swich elágazást.
+- Kikényszerítjük a Distance függvénytől, hogy a megfelelő hibát dobja, ha olyan dimenzióbeli alakzattal állunk szemben amihez nincs kidolgozva távolságszámítás.
+- Kikényszerítjük a Distance függvénytől, hogy a megfelelő hibát dobja, ha a paraméterben megadott indexek nem létező elemre mutatnak.
+- A Distance függvénynek működnie is kéne, ezért kikényszerítjük, hogy megfelelő eredményt adjon vissza. Ehhez a következő tételt alkalmazzuk: ha adott a koordináta-rendszerben az A(a1;a2) és B(b1;b2) pontok, akkor a két pont távolsága egyenlő a két pont megfelelő koordináták különbségeinek négyzetösszegéből vont négyzetgyökével.
+- A következő lépés az lenne, hogy kikényszerítjük a Square osztályt, de ezt nem kell megtennünk, hiszen ez már létezik. Akkor most kellene nekünk valami olyan statikus függvény, aminél, ha oldalhosszúságot adunk meg, akkor legyártja nekünk a négyzet példányt. Ennek érdekében kikényszerítünk egy CreateSquare statikus függvényt.
+- Kikényszerítjük, hogy ez a statikus függvény az oldalhosszúság függvényében egy A = (0,0) kezdő koordinátával készítsen egy négyzetet, mégpedig úgy, hogy a további pontoknál a fel, jobbra, le, balra elvet alkalmazza.
+- Kikényszerítjük a megfelelő konstruktort is, de privátra állítjuk. Ha nem ezt tesszük, akkor meg kell írni azokat az ellenőrzéseket is, amik garantálják, hogy csak olyan négy pontot fogadjon el a konstruktor, amik biztosan négyzetet alkotnak. Nem gond a megírása, de már így is rendesen átestünk a ló túloldalára, ezt most nem írjuk meg.
+- Elérkezett a pillanat, hogy az AreaCalculation függvényünket refaktoráljuk, úgy, hogy most már a példány számolja ki a területet. Ez egyben azt is jelenti, hogy nincs szükség oldal paraméterre, ennek értelmében a TestAreaCalculation és TestAreaCalculationOverflowError tesztfüggvényeket átírjuk, hogy paraméter nélkül kelljen hívni őket. 
 
 A feladat további része már nem szorul túl sok magyarázatra. A téglalap területszámítása a négyzet területszámítása alapján könnyen megírható. Kell egy téglalap objektum és ott a statikus gyártó függvény nem egy oldalt, hanem kettőt kap. Egy szabály lehet, hogy fektetett téglalapot használunk. A kirajzolással se lehet probléma. Egy koordinátarendszerben négy pontot összekötni egy egyenessel nem okozhat problémát.
 
@@ -189,5 +189,8 @@ A bemutatott megoldás természetesen túlzásokba esik. Ahogy fentebb írtuk: "
 <ol class="footnotes-list">
   <li id="fn1"  class="footnote-item"><p>Alberto Sillitti, Angela Martin, Xiaofeng Wang, Elizabeth Whitworth tanulmányai.<a href="#fnref1" class="footnote-backref"> ^</a></p></li>  <li id="fn2"  class="footnote-item"><p>forrás: Programozási technológiák - Kusper Gábor<a href="#fnref2" class="footnote-backref">?</a></p></li  <li id="fn3"  class="footnote-item"><p>meztelen séf = [Jamie Oliver](https://www.jamieoliver.com/). [Joel Spolsky](https://www.joelonsoftware.com/) "[A meztelen séf](https://www.joelonsoftware.com/2001/01/18/big-macs-vs-the-naked-chef/)" című írásában emeli ki, Jamie Oliever szakértelmét.<a href="#fnref3" class="footnote-backref">?</a></p></li></ol>
 </section>
+
 ## Irodalomjegyzék
-|1| Alberto Sillitti, Angela Martin, Xiaofeng Wang, Elizabeth Whitworth: Agile Processes in Software Engineering and Extreme Programming; ISBN: 978-3-642-13053-3|2| Kusper Gábor: Programozási technológiák, Eger, 2013, Eszterházy Károly Főiskola-Matematikai és Informatikai Intézet
+|1| Alberto Sillitti, Angela Martin, Xiaofeng Wang, Elizabeth Whitworth: Agile Processes in Software Engineering and Extreme Programming; ISBN: 978-3-642-13053-3
+
+|2| Kusper Gábor: Programozási technológiák, Eger, 2013, Eszterházy Károly Főiskola-Matematikai és Informatikai Intézet
