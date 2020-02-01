@@ -189,7 +189,7 @@ A bemutatott megoldás természetesen túlzásokba esik. Ahogy fentebb írtuk: "
 <ol class="footnotes-list">
 <li id="fn1"  class="footnote-item"><p>Alberto Sillitti, Angela Martin, Xiaofeng Wang, Elizabeth Whitworth tanulmányai.<a href="#fnref1" class="footnote-backref"> ^</a></p></li>
 <li id="fn2"  class="footnote-item"><p>forrás: Programozási technológiák - Kusper Gábor<a href="#fnref2" class="footnote-backref"> ^</a></p></li>
-<li id="fn3"  class="footnote-item"><p>meztelen séf = [Jamie Oliver](https://www.jamieoliver.com/). [Joel Spolsky](https://www.joelonsoftware.com/) "[A meztelen séf](https://www.joelonsoftware.com/2001/01/18/big-macs-vs-the-naked-chef/)" című írásában emeli ki, Jamie Oliever szakértelmét.<a href="#fnref3" class="footnote-backref"> ^</a></p></li>
+<li id="fn3"  class="footnote-item"><p>meztelen séf = Jamie Oliver(https://www.jamieoliver.com/). Joel Spolsky(https://www.joelonsoftware.com/) "A meztelen séf(https://www.joelonsoftware.com/2001/01/18/big-macs-vs-the-naked-chef/)" című írásában emeli ki, Jamie Oliever szakértelmét.<a href="#fnref3" class="footnote-backref"> ^</a></p></li>
 </ol>
 </section>
 
