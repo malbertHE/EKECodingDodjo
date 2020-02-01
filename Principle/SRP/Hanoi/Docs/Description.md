@@ -121,7 +121,6 @@ A két programot, ha összehasonlítjuk, akkor azt látjuk, hogy az eredeti kise
 > Megjegyzés: Látható, hogy folyamatos refaktorálással egy projekt újraépíthető, miközben el lehet érni azt, hogy pár lépésenként a program továbbra is működőképes állapotban maradjon. Egy nagy projekt esetében ez viszont nem elég. A refaktorálás akkor járható út, ha mindig elemi változtatásokat hajtunk végre. Átnevezünk egy változót. Kiszervezünk egy részt függvénybe, majd egy következő refaktorálásnál átírjuk stb. De már az itteni példánál is látható az, hogy nem minden esetben járható ez az út. Ha pedig egyszerre bonyolultabb változtatásokat hajtunk végre, nem fogjuk tudni, hogy a program még az elvárt állapotban van-e. Hogy ezen túllendüljünk egy újfajta refaktorálási módot kell bevezetni, ahogy arról már volt szó, a TDD módszerhez hasonlót, a TDR módszert. 
 > Fontos még azt is látni, hogy a jelen példaprogram méretei miatt talán úgy tűnik, hogy nincs is értelme ennek a refaktorálásnak, mert túl sok lépésből áll. Egyszerűbbnek tűnhet az egészet gyorsan újraírni. Nagy projekteknél viszont más út járhatatlan. Ha valakinek van egy kis tapasztalata, akkor ő már jól tudja, hogy mekkora probléma tud lenni, ha napokig vagy hetekig nem fordul le egy program, márpedig, ha nem a refaktorálás módszerét használjuk, akkor könnyen össze lehet hozni ezt nagyobb projekteknél. 
 
-## Lábjegyzetek
 <hr class="footnotes-sep">
 <section class="footnotes">
 	<ol class="footnotes-list">
